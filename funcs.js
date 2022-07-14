@@ -62,7 +62,6 @@ let recentTrack = async (token)=>{
 
 let getTrack = async ()=>{
     const token = await auth()
-     //token = 'BQAMg0GIB9Rs9CEsA98XEsH4libTMc6XOUnLDuvKEcm_T25ZXYkYdze0gL5Ry_t9hcaXjd5KKCmzwQpwkDjnvbQG4B8FsG4OMh5cHDidjp1XF-0MtfeT4IH1CieE35D_urp2vFkCSN0dpaR9hOfCGcoOcXtH8Z1aMC0sm-oVSsWH0-1vCC7s5TTgLIic7cwW6u8x826NEA'; 
     const current_track = await currentTrack(token)
     let track; 
     let track_status; 
