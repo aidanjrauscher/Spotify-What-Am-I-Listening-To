@@ -8,8 +8,7 @@ const funcs = require("./funcs");
 
 
 const hostname = '127.0.0.1' 
-const port = '3000'
-const interval = 3 * 60 * 1000 //3 minutes
+const port = '3001'
 
 const app = express()
 

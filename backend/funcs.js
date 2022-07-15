@@ -3,7 +3,7 @@ const { syncBuiltinESMExports } = require("module");
 require('dotenv').config();
 const qs = require("qs");
 
-const client_id = process.env.SPOTIFY_API_ID; // Your client id
+const client_id = process.env.SPOTIFY_CLIENT_ID; // Your client id
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET; // Your secret
 const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN
 const auth_token = 'Basic ' + Buffer.from(client_id + ':' + client_secret).toString('base64')
