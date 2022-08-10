@@ -16,6 +16,7 @@ let auth = async ()=>{
             },
             body: 'grant_type=refresh_token&refresh_token=' + refresh_token
         })
+        console.log(auth_response)
         if(auth_response.status == 200){
             const auth_response_data = await auth_response.json()
             return auth_response_data.access_token
