@@ -1,34 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Spotify-What-Am-I-Listening-To
 
-## Getting Started
+#### This a website that allows visitors to see what I am currently listening, or have recently listened, to on Spotify. 
 
-First, run the development server:
+#### Built using React, Express, and Node. The library Axios is employed to make requests to the Spotify API. 
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+#### I am using the Spotify API's Authorization Code Flow, however I am using my own Spotify account credentials so visitors do not need to authorize access. I manually retrieved my personal authorization code, which I used to get the 'referesh token' that allows the API perpetual access to my personal account.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![diagram of spotify's authroization code flow](./doc_images/spotify_authorization_code_flow.png)
+#### The following steps can be used to get the refresh token, which allows for perpetual use of my own account authorization:
+    1. Set the project's redirect URI in the Spotify API dashboard
+    2. Get the URL encoding of the redirect URI
+    2. Visit the following link: https://accounts.spotify.com/authorize?client_id=<CLIENT_ID>&scope=<SCOPE>&response_type=code&redirect_uri=<URL_ENCODED_REDIRECT_URI>
+    3. Agree to allow the API access to the account
+    4. After accepting, the page will be redirected to the given URI. Copy the authorization code from the redirect link, which will be in the form <REDIRECT_URI>?code=<AUTHORIZATION_CODE>
+    5. Get the authorization token, which is the base 64-encoding of the string <CLIENT_ID>:<CLIENT_SECRET>
+    6. Run the following curl command: curl -H "Authorization: Basic <AUTHORIZATION_STRING>" -d grant_type=authorization_code -d code=<AUTHORIZATION_TOKEN> -d redirect_uri=<URL_ENCODED_REDIRECT_URI> https://accounts.spotify.com/api/token
+    7. Record the <ACCESS_TOKEN> and <REFRESH_TOKEN> from the curl responses
